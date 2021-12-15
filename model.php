@@ -38,6 +38,32 @@ class model {
         $res=mysqli_query($this->conn,$query);
         return mysqli_fetch_all($res,MYSQLI_ASSOC);
     }
+  public function add_to_cart($id,$user_id){
+        $query="SELECT * FROM cart WHERE product_id=$id and user_id=$user_id";
+        $res= mysqli_query($this->conn,$query);
+        if(mysqli_num_rows($res)==0){
+            $query = "INSERT INTO cart values(null, '$user_id','$id','1')"; 
+            mysqli_query($this->conn,$query);
+   }
+
+}
+
+public function get_selected_products($user_id){ 
+          $query ="SELECT name,price,description,image,cart.id,quantity FROM products join cart ON product_id = products.id WHERE user_id=$user_id";
+          $res=mysqli_query($this->conn,$query);
+         return mysqli_fetch_all($res,MYSQLI_ASSOC);
+
+    }
+
+     public function delete_from_cart($id){
+        $query ="DELETE FROM  cart  WHERE id=$id";
+        $res=mysqli_query($this->conn,$query);
+    }
+
+    public function update_cart($id,$count){
+        $query ="UPDATE  cart set quantity = $count WHERE id=$id";
+        $res=mysqli_query($this->conn,$query);
+    }
     
 }
 $model = new model;    

@@ -9,10 +9,6 @@
 		 $model->add_to_cart($_POST['id'],$user_id);
 	}
 
-	if($action=="update"){
-		$model->update_cart($_POST['id'],$_POST['count']);
-	}
-
 	if($action=="delete"){
 		$model->delete_from_cart($_POST['id']);
 	}

@@ -45,6 +45,8 @@ nav ul li:hover{
 
        if(isset($_SESSION['user'])){
        ?>
+       <li><a href="cart.php">Cart</a></li>
+
        <li><a href="logout.php">Logout</a></li>
        <li><a href=""><?=$_SESSION['user']?></a></li>
      <?php
@@ -52,7 +54,7 @@ nav ul li:hover{
        else{
 ?>
 <li><a href="login_form.php">login</a></li>
-     <li><a href="registr_form.php">Registr</a></li>
+     <li><a href="registr_form.php">Register</a></li>
      <?php
      }
     ?> 
